@@ -22,7 +22,7 @@ jobs:
 
     - name: 'Get version to deploy'
       id: get_version
-      run: echo "::set-output version=(cat manifest.json | jq .'benefit_finder')"
+      run: echo "::set-output name=version::$(cat manifest.json | jq .'benefit_finder' | cut -d '"' -f 2)"
 
     - name: 'Login via Azure CLI'
       uses: azure/login@v1
